@@ -17,3 +17,9 @@ class ReceipeSerializer(serializers.ModelSerializer):
         data['ingredients'] = IngredientsSerializer(
             instance.receipe_ingredients.all(), many=True).data
         return data 
+
+class CreateReceipeSerializer(serializers.ModelSerializer):
+    receipe_slug = serializers.CharField(allow_null=True, required=False)
+    class Meta:
+        model = Receipe
+        fields = '__all__'
